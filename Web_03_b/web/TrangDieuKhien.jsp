@@ -14,6 +14,6 @@
     </head>
     <body>
         
-        <h1>Dang nhap thanh cong ! Chao mung ngai <%=((UserDTO)request.getAttribute("user")).getFullname() %> </h1>
+        <h1>Dang nhap thanh cong ! Chao mung <%=((UserDTO)request.getAttribute("user")).getFullName()%> </h1>
     </body>
 </html>

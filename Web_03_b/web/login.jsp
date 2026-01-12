@@ -17,5 +17,10 @@
             Password <input type="password" name="password"><br/>
             <input type="submit" value="login">
         </form>
+        <%
+            String message = request.getAttribute("mess")+"";
+            message = (message.equals("null"))?"":message;
+        %>
+        <span style="color:red"> <%=message%></span>
     </body>
 </html>
