@@ -6,6 +6,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +19,7 @@ import model.UserDAO;
  *
  * @author Thua
  */
-public class NewServlet extends HttpServlet {
+public class mainController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,23 +35,21 @@ public class NewServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            HttpSession session = request.getSession();
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
-            String url = "";
-            UserDAO udao = new UserDAO();
-            UserDTO user = udao.login(username, password);
-
-            if (user != null) {
-                url = "TrangDieuKhien.jsp";
-                session.setAttribute("user", user);
-            } else {
-                url = "login.jsp";
-                request.setAttribute("mess", "Sai mat khau hoac tai khoan");
+            String action = request.getParameter("action");
+            String url = "login";
+            
+            if(action.equals("login")){
+                url = "LoginController";
+                
+            }else if (action.equals("logout")){
+                url = "LogoutController";
+                
             }
-
+            
             request.getRequestDispatcher(url).forward(request, response);
         }
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

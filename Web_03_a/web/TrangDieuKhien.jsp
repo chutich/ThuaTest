@@ -15,5 +15,7 @@
     <body>
         
         <h1>Dang nhap thanh cong ! Chao mung ngai <%=((UserDTO)request.getAttribute("user")).getFullname() %> </h1>
+        <h2><a href="LogoutServlet">Logout</a></h2>
+        
     </body>
 </html>
